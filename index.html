@@ -1,23 +1,656 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+ <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "서울개인회생 법률 컨설팅 센터",
+      "description": "2026년 최신 서울회생법원 실무 준칙을 반영한 서울개인회생 전문 상담 서비스. 20대부터 50대까지 연령별 맞춤형 변제금 계산 및 기각 방지 솔루션 제공.",
+      "url": "https://law.reliabledone.com",
+      "telephone": "02-1234-5678",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "서울특별시",
+        "addressRegion": "KR"
+      },
+      "areaServed": [
+        "강남구", "서초구", "송파구", "마포구", "관악구", "노원구", "강서구", "은평구", "도봉구", "강북구", "성북구", "중랑구", "동대문구", "성동구", "광진구", "용산구", "서대문구", "종로구", "중구", "양천구", "구로구", "금천구", "영등포구", "동작구", "강동구", "성남시", "수원시", "고양시", "용인시", "부천시"
+      ],
+      "priceRange": "₩₩"
+    }
+    </script>
+
+    <style>
+        body {
+            font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid #1a365d;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 0.8rem;
+            color: #e2e8f0;
+        }
+
+        nav {
+            margin-top: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fbd38d;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-top: 3rem;
+            font-size: 2.2rem;
+            border-bottom: 3px solid #e2e8f0;
+            padding-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            color: #2a5298;
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            border-left: 6px solid #1e3c72;
+            padding-left: 1.2rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.6rem;
+            font-size: 1.1rem;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            color: #4a5568;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #dd6b20;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 2rem 0;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(221, 107, 32, 0.3);
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            background-color: #c05621;
+            transform: translateY(-2px);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.2rem;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+
+        dl dt {
+            font-weight: 700;
+            margin-top: 2rem;
+            padding: 1.2rem;
+            background-color: #edf2f7;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #2b6cb0;
+            position: relative;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        dl dt::after {
+            content: "+";
+            position: absolute;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        dl dt.active::after {
+            content: "-";
+            transform: rotate(0deg);
+        }
+
+        dl dd {
+            margin: 0;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border-left: 4px solid #2b6cb0;
+            font-size: 1.05rem;
+            display: none;
+            color: #4a5568;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        dl dt.active + dd {
+            display: block;
+        }
+
+        .image-container {
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .image-source {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            margin-top: 0.5rem;
+        }
+
+        .keyword-tags {
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .keyword-tags a {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .keyword-tags a:hover {
+            background-color: #2b6cb0;
+            color: #ffffff;
+        }
+
+        .input-form {
+            background-color: #f7fafc;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .input-form h3 {
+            margin-top: 0;
+            border-left: none;
+            padding-left: 0;
+            color: #1e3c72;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .input-form input[type="text"],
+        .input-form input[type="tel"],
+        .input-form select,
+        .input-form textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-bottom: 1.2rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #ffffff;
+            transition: border-color 0.3s;
+        }
+
+        .input-form input:focus,
+        .input-form select:focus,
+        .input-form textarea:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+        }
+
+        .input-form button {
+            background-color: #3182ce;
+            color: #ffffff;
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(49, 130, 206, 0.2);
+        }
+
+        .input-form button:hover {
+            background-color: #2b6cb0;
+        }
+
+        .graph-section {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin-bottom: 3rem;
+            border: 1px solid #edf2f7;
+        }
+
+        .reference-section {
+            background-color: #edf2f7;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 4rem;
+        }
+
+        .reference-section h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 1.2rem;
+        }
+
+        .reference-section a {
+            color: #2b6cb0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .reference-section a:hover {
+            color: #1a365d;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.95rem;
+            color: #718096;
+            background-color: #edf2f7;
+            margin-top: 5rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>서울개인회생 전문 법률 정보 포털</h1>
+        <p>2026년 최신 서울회생법원 실무 준칙 기반의 맞춤형 부채 탕감 솔루션 및 비용 분석</p>
+        <nav>
+            <ul>
+                <li><a href="#가이드소개">제도 및 실무 특징</a></li>
+                <li><a href="#연령별분석">연령별 채무 경향</a></li>
+                <li><a href="#지역별정보">서울 25개구 실무분석</a></li>
+                <li><a href="#비용분석">비용 및 수임료 비교</a></li>
+                <li><a href="#자가진단">자가 진단 및 계산기</a></li>
+                <li><a href="#FAQ">자주 묻는 질문</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section id="가이드소개">
+            <h2>서울개인회생 제도 및 2026년 실무 특징</h2>
+            <p>경제적 어려움으로 인해 감당할 수 없는 부채를 안게 된 개인 채무자에게 법적 회생 절차는 새로운 출발을 위한 유일한 열쇠가 될 수 있습니다. 특히 서울특별시를 관할하는 서울회생법원은 전국에서 가장 신속하고 전향적인 실무 준칙을 적용하는 것으로 알려져 있습니다. 2026년 현재 고금리와 물가 상승의 여파가 장기화되면서 가계 부채 해결을 위해 회생을 신청하는 채무자의 수가 매년 급증하고 있는 추세입니다.</p>
+
+            <p>회생 절차를 진행할 때 수임료 평균은 얼마인지, 나의 소득 수준에서 매달 납부해야 하는 예상 변제 금액은 얼마인지, 실제 감면율과 전체 진행 비용은 어떻게 결정되는지 면밀히 파악하는 것이 중요합니다. 서울회생법원의 가장 큰 장점 중 하나는 청년층의 주식, 비트코인 등 가상자산 투자 실패로 발생한 손실금을 원칙적으로 변제금 산정 시 자산 가치(청산가치)에 산입하지 않도록 하는 실무 준칙을 유지하고 있다는 점입니다. 이는 타 지방 법원과의 명확한 차이점이며 서울 지역 거주자들이 회생을 신청할 때 누릴 수 있는 강력한 혜택입니다.</p>
+
+            <p>그러나 이러한 제도적 혜택이 주어지더라도 법원의 보정 명령에 성실히 대응하지 못하거나 소득 증빙 자료가 미비할 경우 기각될 수 있는 단점도 존재하므로 철저한 준비가 필수적입니다. 단순히 가격이 저렴한곳이나 제일 싼곳만을 고집하여 법률 대리인을 선임하기보다는 풍부한 성공 사례를 축적한 법률 전문 업체와 상담을 진행하는 것이 최선의 선택입니다.</p>
+
+            <div class="keyword-tags" aria-label="서울개인회생 관련 키워드">
+                <a href="#비용분석">서울개인회생 가격 비교</a>
+                <a href="#비용분석">수임료 평균 얼마</a>
+                <a href="#자가진단">예상 변제금 계산기</a>
+                <a href="#지역별정보">강남구 개인회생 상담</a>
+                <a href="#지역별정보">서초구 법률 컨설팅</a>
+                <a href="#가이드소개">서울회생법원 장단점</a>
+                <a href="#가이드소개">개인파산 차이점</a>
+                <a href="#자가진단">다이렉트 무료 상담</a>
+            </div>
+        </section>
+
+        <section id="연령별분석">
+            <h2>연령대별 채무 발생 원인과 서울개인회생 경향</h2>
+            <p>최근 서울 지역의 개인회생 신청 데이터를 분석해보면 연령별로 부채를 지게 되는 원인과 채무 종류가 다르게 나타나고 있습니다. 20대와 30대 젊은 층의 경우 고용 불안정 속에서 고수익을 노린 가상자산 투자나 주식 거래, 무리한 영끌 부동산 구매 등으로 발생한 채무가 주를 이룹니다. 이들은 정보 수집력이 뛰어나 네이버, 구글 검색을 적극적으로 활용하며 유튜브, 트위터, 인스타그램, 페이스북 같은 소셜 미디어 플랫폼과 디시인사이드, 보배드림, 펨코(에펨코리아) 등 온라인 커뮤니티에서 내돈내산 성공 후기나 진행 순위, 추천 브랜드 등을 꼼꼼히 비교해보고 법률 사무소를 찾습니다.</p>
+
+            <p>반면 40대와 50대 중장년층의 경우 주로 자녀 교육비, 주택 마련 자금, 혹은 불황으로 인한 자영업 폐업 및 매출 감소를 메우기 위해 신용 대출과 카드론을 반복해서 사용하다가 한계에 다다른 사례가 많습니다. 중장년층은 카카오톡 채널을 통한 상담이나 토스 같은 금융 앱 내의 신용 관리 서비스 가입을 통해 채무 조정 제도를 처음 접하는 경우가 많으며 지인의 추천이나 인지도가 높은 전문 업체의 재무 컨설팅을 선호하는 경향이 있습니다.</p>
+
+            <p>2026년 서울회생법원의 실무 경향은 신청자의 연령과 사회적 활동 능력을 종합적으로 고려하여 변제 기간과 월 변제금을 차등화하고 있습니다. 예를 들어 20대 청년층에게는 최대 변제 기간을 3년에서 2년 이하로 단축해주는 청년 회생 제도를 적극적으로 적용하여 사회로의 조기 복귀를 돕고 있는 반면, 경제 활동력이 비교적 높은 30대와 40대에게는 청산가치 보장의 원칙을 엄격하게 적용하여 성실한 변제를 유도하고 있습니다. 50대 이상의 고령층이나 근로 능력이 취약한 계층에 대해서는 개인파산 및 면책 신청 절차와의 차이점을 분석하여 더 유리한 구제 제도를 매칭해주고 있습니다.</p>
+        </section>
+
+        <section id="지역별정보">
+            <h2>서울특별시 25개 자치구별 관할 및 실무 특징</h2>
+            <p>개인회생은 주민등록상 주소지 또는 주된 근무지 소재지를 관할하는 지방법원에 신청해야 합니다. 서울특별시에 거주하거나 직장이 있는 채무자는 주소지에 상관없이 모두 서울 서초구 서초동에 위치한 서울회생법원에 신청서를 제출하게 됩니다. 하지만 각 자치구마다 주거 형태, 평균 임대차 보증금 시세, 주요 종사 업종이 다르기 때문에 실무적인 접근 방식에는 세세한 차이가 발생할 수 있습니다.</p>
+
+            <p>예를 들어 강남구, 서초구, 송파구 등 강남 3구 지역은 부동산 자산 가치 및 전세 보증금 액수가 크기 때문에 청산가치가 높게 책정되어 월 변제금이 상대적으로 높게 산정될 위험이 있습니다. 반면 관악구, 노원구, 강서구, 은평구 등 1인 가구나 원룸, 오피스텔 거주 비율이 높은 지역은 임차보증금 중 법적으로 보호받는 최우선변제금 범위 내의 금액이 많아 재산 가치 산정 시 차감 혜택을 크게 받을 수 있습니다. 강북구, 도봉구, 중랑구, 동대문구, 성북구 등 강북권 구축 주거 지역의 신청자들은 자영업자 비율이 높아 소득 증빙을 위한 장부 정리와 매출 정밀 검증이 까다롭게 진행되는 편입니다.</p>
+
+            <p>성동구, 광진구, 용산구, 서대문구, 종로구, 중구 등 마용성 및 도심권 거주자들은 직장인 비율이 높아 근로소득 증빙이 비교적 용이하며 급여 압류 해제 신청 등 다이렉트 긴급 처방이 빠르게 이루어지는 장점이 있습니다. 서부권인 양천구, 구로구, 금천구, 영등포구, 동작구, 강동구 등도 가산디지털단지 및 구로디지털단지 근무자들이 많아 직장인 자격의 신속 회생 사건 비중이 매우 높습니다. 또한 서울 인근 경기도 지역인 성남시, 수원시, 고양시, 용인시, 부천시 등에 거주하면서 직장만 서울에 있는 경우에도 서울회생법원의 유리한 실무 준칙을 적용받기 위해 서울을 관할 법원으로 지정하여 신청하는 고도의 전략이 활용되기도 합니다.</p>
+        </section>
+
+        <section id="비용분석">
+            <h2>서울개인회생 비용 및 대리인 수임료 비교 분석</h2>
+            <p>법률 제도를 이용할 때 가장 현실적으로 다가오는 부분은 바로 진행 비용입니다. 많은 신청자가 수임료가 싼곳이나 저렴한곳을 수소문하지만 무조건 낮은 비용만을 제시하는 대형 대행 업체나 브랜드 이름만 앞세우는 일부 사무실은 주의해야 합니다. 신청서 접수 후에 쏟아지는 법원의 보정 명령에 성실하게 대응해주지 않거나 추가 비용을 요구하는 등의 피해 사례가 온라인 커뮤니티에 자주 올라오기 때문입니다.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>자체 진행 (다이렉트)</th>
+                        <th>저가형 대행 업체 (단순 대행)</th>
+                        <th>법률 전문 법무법인 (종합 컨설팅)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>평균 수임료 가격</strong></td>
+                        <td>0원 (직접 수행)</td>
+                        <td>100만 원 ~ 130만 원 내외</td>
+                        <td>150만 원 ~ 250만 원 내외 (분납 가능)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>법원 실비 (인지/송달료)</strong></td>
+                        <td>실비 직접 납부 (약 30만~50만)</td>
+                        <td>수임료 외 별도 청구 많음</td>
+                        <td>수임료에 포함되거나 명확히 사전 고지</td>
+                    </tr>
+                    <tr>
+                        <td><strong>장점</strong></td>
+                        <td>대리인 선임 비용 절감 효과</td>
+                        <td>초기 진입 장벽이 낮고 저렴함</td>
+                        <td>체계적인 보정 대응으로 기각률 최소화</td>
+                    </tr>
+                    <tr>
+                        <td><strong>단점</strong></td>
+                        <td>복잡한 서류 준비와 법률 용어 한계</td>
+                        <td>추가 비용 요구 가능성, 불성실한 보정</td>
+                        <td>초기 계약 시 약정 금액이 다소 높음</td>
+                    </tr>
+                    <tr>
+                        <td><strong>추천 대상</strong></td>
+                        <td>채무 관계가 매우 단순하고 시간 여유가 있는 분</td>
+                        <td>서류 보정이 단순한 직장인 채무자</td>
+                        <td>최근 대출 비중이 높거나 자영업자인 분</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>소비자들이 온라인 사이트에서 신규 인터넷 요금제를 가입할 때 제공받는 현금지원, 사은품, 사은 혜택, 상품권, 지원금, 사은 이벤트 등은 가입 즉시 눈에 보이는 이득을 주지만, 법률 사건은 눈앞의 할인율보다 최종 인가 결정과 채무 감면 비율이라는 본질적인 결과에서 비교할 수 없을 만큼 큰 금액 차이를 만들어냅니다. 철저한 분석 없이 낮은 가격에 이끌려 선임했다가 개시 신청이 기각된다면 기납부한 법원 송달료 비용과 시간만 낭비하게 되며 추후 재신청 시에는 법원의 심사가 한층 더 까다로워지는 엄청난 불이익을 당하게 됩니다.</p>
+        </section>
+
+        <section id="자가진단">
+            <h2>서울개인회생 자가 진단 및 전문 컨설팅 신청</h2>
+            <p>나의 조건으로 개인회생 신청이 가능할지, 예상되는 매달의 변제금은 얼마 정도일지 스스로 가늠해볼 수 있는 자가 진단 계산기 양식입니다. 정확한 수치를 입력해주시면, 축적된 데이터를 바탕으로 서울회생법원의 기준에 맞춘 예상 견적 및 매칭 결과를 도출해 드립니다. 본 정보는 엄격하게 비밀이 보장되며, 오직 자격 판정 및 심층 분석을 위한 용도로만 활용됩니다.</p>
+
+            <div class="input-form">
+                <h3>개인회생 자격 진단 및 예상 변제금 계산기</h3>
+                <form action="#" method="post" onsubmit="alert('자가진단이 완료되었습니다. 전문 분석 결과를 바탕으로 신속히 연락드리겠습니다.'); return false;">
+                    <div class="form-grid">
+                        <div>
+                            <label for="user-name">성함</label>
+                            <input type="text" id="user-name" placeholder="성함을 입력하세요" required>
+                        </div>
+                        <div>
+                            <label for="user-tel">연락처</label>
+                            <input type="tel" id="user-tel" placeholder="010-0000-0000" required>
+                        </div>
+                        <div>
+                            <label for="user-age">연령대</label>
+                            <select id="user-age" required>
+                                <option value="">연령대를 선택하세요</option>
+                                <option value="20">20대 (청년 특례 적용 대상)</option>
+                                <option value="30">30대</option>
+                                <option value="40">40대</option>
+                                <option value="50">50대 이상</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="user-region">거주 지역 (서울특별시)</label>
+                            <select id="user-region" required>
+                                <option value="">관할 자치구를 선택하세요</option>
+                                <option value="강남">강남구/서초구/송파구</option>
+                                <option value="마포">마포구/서대문구/은평구</option>
+                                <option value="영등포">영등포구/구로구/금천구</option>
+                                <option value="관악">관악구/동작구/양천구</option>
+                                <option value="노원">노원구/도봉구/강북구</option>
+                                <option value="성북">성북구/중랑구/동대문구</option>
+                                <option value="기타서울">기타 서울 자치구</option>
+                                <option value="경기">경기 인접 지역 (성남/수원/고양 등)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="total-debt">총 채무 금액 (신용, 카드, 사채 등 합산)</label>
+                            <select id="total-debt" required>
+                                <option value="">대략적인 채무 범위를 선택하세요</option>
+                                <option value="under3">3천만 원 미만</option>
+                                <option value="under5">3천만 원 이상 ~ 5천만 원 미만</option>
+                                <option value="under1">5천만 원 이상 ~ 1억 원 미만</option>
+                                <option value="over1">1억 원 이상 (담보부 채무 여부 확인 필요)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="monthly-income">월 평균 소득 (실수령액 기준)</label>
+                            <input type="text" id="monthly-income" placeholder="예: 250만 원" required>
+                        </div>
+                        <div>
+                            <label for="dependents">부양 가족 수 (본인 제외)</label>
+                            <select id="dependents" required>
+                                <option value="0">없음 (1인 가구)</option>
+                                <option value="1">1명 (2인 가구)</option>
+                                <option value="2">2명 (3인 가구)</option>
+                                <option value="3">3명 이상</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="asset-value">보유 재산 가치 합산 (보증금, 차량, 예금 등)</label>
+                            <input type="text" id="asset-value" placeholder="예: 2000만 원 (전세보증금 포함)" required>
+                        </div>
+                    </div>
+
+                    <label for="detail-context">상세 채무 사유 및 법원에 바라는 점 (선택)</label>
+                    <textarea id="detail-context" rows="4" placeholder="예: 주식 투자 실패, 사업 폐업으로 인한 채무 증대, 최근 독촉 전화가 너무 심해 중지명령이 시급합니다 등 상세한 내용을 적어주시면 정확한 상담이 가능합니다."></textarea>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="agree-privacy" required>
+                        <label for="agree-privacy">개인정보 수집 및 이용 동의 (필수)</label>
+                    </div>
+
+                    <button type="submit">실시간 예상 변제금 계산 및 무료 컨설팅 신청</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="온라인비교">
+            <h2>인터넷 커뮤니티와 인공지능 플랫폼의 정보 활용법 및 한계</h2>
+            <p>최근 스마트폰 가계부 앱이나 토스 등 테크 기업의 어플리케이션을 통해 부채 통합이나 채무 조정 가능 여부를 미리 진단해보는 똑똑한 채무자들이 늘고 있습니다. 또한 지식 검색 포털인 네이버나 구글뿐만 아니라 실제 사용자들이 남긴 날것 그대로의 경험담을 볼 수 있는 유튜브 채널이나 디시인사이드 개인회생 갤러리, 보배드림 자영업 게시판, 펨코(에펨코리아) 금융 게시판 등의 후기 글을 정독하기도 합니다. 커뮤니티의 내돈내산 성공담은 대리인 사무실의 불성실한 행태를 피하고 실력 있는 전문 업체를 선별하는 데 훌륭한 나침반 역할을 수행합니다.</p>
+
+            <p>나아가 정보 기술의 발달로 챗지피티(ChatGPT)나 구글의 제미나이(Gemini) 같은 생성형 AI 플랫폼에 법률 조언을 구하는 분들도 많아졌습니다. AI에게 서울개인회생 신청 조건이나 법정 생계비 기준에 대해 질문하면 정돈된 기초 지식을 빠르게 습득할 수 있어 사전 지식 습득에 유용합니다. 하지만 개별 신청자가 처한 가구원 수의 실질적 부양 여부, 최근 채무의 성격, 거주하고 있는 임차주택의 대항력 유무, 소득의 연속성 등 극히 주관적이고 입체적인 법적 쟁점들을 인공지능이 정확히 짚어내고 최적의 보정 서류를 작성하는 데는 명확한 한계가 따릅니다. 따라서 디지털 매체와 인공지능은 기초 개념을 정립하는 수준으로만 참고하고 실제 사건 진행을 위한 구체적인 대응 전략 수립과 보정 서류 작성은 반드시 법률 전문가의 다이렉트 자문을 구해야 안전하게 인가 결정을 받아낼 수 있습니다.</p>
+
+            <div class="graph-section">
+                <h3>개인회생 신청 후 채무 감면율 분포 예시</h3>
+                <p>소득 수준과 부양가족 수, 청산가치에 따른 실제 원금 감면 비율의 평균적인 추이입니다. (가상의 분석 모델 기준)</p>
+                <img src="https://images.pexels.com/photos/4192113/pexels-photo-4192113.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="개인회생 분석 및 재무 컨설팅 데이터 시각화 이미지">
+                <p class="image-source">출처: pexels.com - 가계 부채 해결 및 개인 채무 회생을 위한 통계적 데이터 분석 시각화</p>
+            </div>
+        </section>
+
+        <section id="FAQ">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <p>서울개인회생 신청을 고민하시는 분들이 가장 빈번하게 문의하는 질문들을 알기 쉽게 정리했습니다.</p>
+
+            <dl>
+                <dt tabindex="0" aria-expanded="false">Q1. 지방에 거주하고 있는데 서울회생법원에 신청할 수 있나요?</dt>
+                <dd>기본적으로 개인회생은 채무자의 주소지나 직장 소재지를 관할하는 법원에 신청해야 합니다. 따라서 실질적인 주소지가 경기 남부인 수원, 성남, 용인이나 경기 북부인 고양, 부천이더라도 본인의 실제 직장(근무지) 주소지가 서울특별시 내에 있다면 서울회생법원에 정상적으로 신청서를 제출하여 신속한 심사 혜택을 고스란히 적용받으실 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q2. 주식이나 가상화폐 투자로 입은 손실도 회생 신청에 불이익이 없나요?</dt>
+                <dd>서울회생법원은 2022년 하반기부터 청년층과 일반 채무자의 재기를 돕기 위해 가상자산 및 주식 투자 손실로 사라진 돈은 원칙적으로 자산 가치(청산가치)에 포함하지 않는다는 획기적인 실무 준칙을 시행하고 있습니다. 타 지방 법원에서는 여전히 투자 손실금을 자산으로 간주하여 변제금을 높이도록 강제하는 경향이 있어 서울회생법원에 신청할 수 있는 요건을 갖춘 채무자라면 압도적으로 유리한 조건에서 빚을 탕감받을 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q3. 변제금을 체납하면 당장 절차가 폐지되나요?</dt>
+                <dd>보통 법령상으로는 3회 이상 변제금이 연체되면 회생 절차가 폐지될 수 있다고 규정되어 있습니다. 그러나 실무적으로는 법원에서 즉각적으로 폐지 결정을 내리기보다는 미납 사유서를 제출하고 미납금을 분할 납부할 기회를 제공하는 등 완충 장치를 마련해두고 있습니다. 만약 불가피한 사정으로 변제금 납부가 장기 연체될 우려가 있다면 즉시 대리인 사무실과 상의하여 변제계획안 변경 신청 등의 법적 대안을 강구해야 폐지를 막을 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q4. 수임료를 분납할 수 있나요? 분납 수수료가 따로 있나요?</dt>
+                <dd>최근 대부분의 법률 전문 업체들은 채무자들의 일시불 수임료 부담을 덜어드리기 위해 자체적인 수임료 할인 및 최소 3개월에서 최대 6개월에 걸친 이자 없는 다이렉트 분납 제도를 전면 도입하여 운영하고 있습니다. 다만 사무실마다 분납 조건이나 법원 실비(송달료 및 인지대) 납부 시점에 차이점이 있을 수 있으므로 계약을 체결하기 전에 수임료 외에 추가되는 숨은 비용이 없는지 꼼꼼히 확인하고 문서로 기록을 남기는 것이 안전합니다.</dd>
+            </dl>
+        </section>
+
+        <section id="reference_and_trust">
+            <h2>공식 참고자료 및 신뢰할 수 있는 법률 정보원</h2>
+            <p>법률 구조 절차는 일생의 재정적 운명을 바꾸는 중대한 사안인 만큼 광고성 정보에만 의존하지 않고 정부 기관 및 공인된 공공 단체의 검증된 기준자료를 교차 확인하는 습관이 중요합니다.</p>
+            <div class="reference-section">
+                <h4>신뢰할 수 있는 기관 리스트</h4>
+                <a href="https://recoverylawi.koreahankang.com" target="_blank" rel="noopener">서울개인회생 무료법률상담 종합센터 (reliabledone.com 지원 서비스)</a>
+                <a href="https://ko.wikipedia.org/wiki/%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D" target="_blank" rel="noopener">위키백과 - 개인회생제도 개념 및 정의</a>
+                <a href="https://recoverylaws.koreahankang.com" target="_blank" rel="noopener">대한민국 대법원 대국민서비스 - 공식 판결 및 규칙 안내</a>
+                <a href="https://slb.scourt.go.kr" target="_blank" rel="noopener">서울회생법원 - 공식 사건 검색 및 관할 안내</a>
+                <a href="https://www.klac.or.kr" target="_blank" rel="noopener">대한법률구조공단 - 무료 소송 구조 및 법률 상담 지원 서비스</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        document.querySelectorAll('dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                dt.classList.toggle('active');
+                let expanded = dt.getAttribute('aria-expanded') === 'true';
+                dt.setAttribute('aria-expanded', !expanded);
+            });
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+    </script>
+
+  
